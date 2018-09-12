@@ -30,11 +30,11 @@ The Learning Outcomes Are:
 
    * Build helper functions that will allow us to use a command line menu to:
    
-        1. Add a record
-        2. Find a record by name
-        3. Edit a record
-        4. Delete a record
-        5. Exit the program
+       1. Add a record
+       2. Find a record by name
+       3. Edit a record
+       4. Delete a record
+       5. Exit the program
 
 
 ## Setting up MongoDB in Cloud9:
@@ -66,6 +66,7 @@ eg.
 ```sudo pip3 install pymongo```
 
 ## Setting up the Python app:
+**(Code Institute Tutorial)**
 
 Add the imports:
 
