@@ -42,20 +42,22 @@ The Learning Outcomes Are:
 
 ```wget -q https://git.io/vFb1J -O /tmp/setupmongodb.sh && source /tmp/setupmongodb.sh```
 
-2 Connect to MonngoDB on mlab:
+2 Connect to MonngoDB on mLab:
 
 ```mongo ds249992.mlab.com:49992/mytestdb -u <dbuser> -p <dbpassword>```
 
 3 To see colections:
+
 ```show collections```
 
 4 Create a short variable name for a collection:
 
 ```<short_name> = db.<collection_name>;```
 eg.
+
 ```coll = db.myFirstMDB;```
 
-5 To enable Ptython to work with our MongoDB, install the libraries first
+5 To enable Python to work with our MongoDB, install the Python libraries first
 
 ```sudo apt-get install build-essential python-dev```
 
