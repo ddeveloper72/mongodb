@@ -12,12 +12,12 @@ Remember, CRUD -> ```Create, Read, Update, Delete```
 
 The Learning Outcomes Are:
 
-1 The Twitter API Introcreating a MongoDB database in the cloud
+1 Setting up a MongoDB database in the cloud
 
    * Register and account with [mLab](https://mlab.com/), 
    * Creating a test database
     
-2 Twitter API Accessusing MongoDB command line tools to manipulate data
+2 Accessing MongoDB command line tools to manipulate data
 
    * Connect using the mongo shell 
 
