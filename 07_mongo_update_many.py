@@ -1,9 +1,14 @@
-import pymongo
 import os
+import pymongo
+from dotenv import load_dotenv
+
+load_dotenv()
 
 MONGODB_URI = os.getenv("MONGO_URI")
+
 DBS_NAME = "mytestdb"
 COLLECTION_NAME = "myFirstMDB"
+
 
 def mongo_connect(url):
     try:
@@ -12,16 +17,25 @@ def mongo_connect(url):
         return conn
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s") % e
-        
+
+
 conn = mongo_connect(MONGODB_URI)
 
 coll = conn[DBS_NAME][COLLECTION_NAME]
 
-coll.update_many({'nationality': 'american'}, {'$set': {'hair_colour': 'orange'}})
+# Updates all documents that match the specified filter for a collection.
+coll.update_many(
+    {
+        'nationality': 'irish'
+    },
+    {
+        '$set': {
+            'hair_colour': 'green-white-orange'
+        }
+    }
+)
 
-documents = coll.find({'nationality': 'american'})
+documents = coll.find({'nationality': 'irish'})
 
 for doc in documents:
     print(doc)
-    
-
