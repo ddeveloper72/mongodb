@@ -1,9 +1,14 @@
-import pymongo
 import os
+import pymongo
+from dotenv import load_dotenv
+
+load_dotenv()
 
 MONGODB_URI = os.getenv("MONGO_URI")
+
 DBS_NAME = "mytestdb"
 COLLECTION_NAME = "myFirstMDB"
+
 
 def mongo_connect(url):
     try:
@@ -11,18 +16,20 @@ def mongo_connect(url):
         return conn
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s") % e
-        
-def show_menu(): # CRUD Create, Read, Update, Delete
+
+
+def show_menu():  # CRUD Create, Read, Update, Delete
     print("")
     print("1. Add a record")
     print("2. Find a record by name")
     print("3. Edit a record")
     print("4. Delete a record")
     print("5. Exit")
-    
-    option = input ("Enter option: ")
+
+    option = input("Enter option: ")
     return option
-    
+
+
 def main_loop():
     while True:
         option = show_menu()
@@ -41,15 +48,9 @@ def main_loop():
             print("Invalid option")
         print("")
 
+
 conn = mongo_connect(MONGODB_URI)
 
 coll = conn[DBS_NAME][COLLECTION_NAME]
 
 main_loop()
-
-        
-        
-    
-
-    
-    
