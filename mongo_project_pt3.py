@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MONGODB_URI = os.getenv("MONGO_URI")
+
 DBS_NAME = "mytestdb"
 COLLECTION_NAME = "myFirstMDB"
 
@@ -12,9 +13,15 @@ COLLECTION_NAME = "myFirstMDB"
 def mongo_connect(url):
     try:
         conn = pymongo.MongoClient(url)
+        print("Mongo is connected!")
         return conn
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s") % e
+
+
+conn = mongo_connect(MONGODB_URI)
+
+coll = conn[DBS_NAME][COLLECTION_NAME]
 
 
 def show_menu():  # CRUD Create, Read, Update, Delete
@@ -56,13 +63,18 @@ def add_record():
     occupation = input("Enter occupation > ")
     nationality = input("Enter nationality > ")
 
-    new_doc = {'first': first.lower(), 'last': last.lower(), 'dob': dob,
-               'gender': gender.lower(), 'hair_colour': hair_colour.lower(),
-               'occupation': occupation.lower, 'nationality': nationality.lower()}
+    new_doc = {
+        'first': first.lower(),
+        'last': last.lower(),
+        'dob': dob,
+        'gender': gender.lower(),
+        'hair_colour': hair_colour.lower(),
+        'occupation': occupation.lower(),
+        'nationality': nationality.lower()
+    }
 
     try:
-        coll.insert(new_doc)
-        print("")
+        coll.insert_one(new_doc)
         print("Document inserted")
     except:
         print("Error accessing the datbase")
@@ -95,9 +107,5 @@ def main_loop():
             print("Invalid option")
         print("")
 
-
-conn = mongo_connect(MONGODB_URI)
-
-coll = conn[DBS_NAME][COLLECTION_NAME]
 
 main_loop()
